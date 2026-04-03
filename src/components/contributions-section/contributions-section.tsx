@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { GitHubCalendar } from 'react-github-calendar';
 import { githubContributionTheme } from '../../lib/github';
@@ -25,6 +26,40 @@ export function ContributionsSection({
   hasGithubUsername,
   theme,
 }: ContributionsSectionProps) {
+  const [viewportWidth, setViewportWidth] = useState(() => {
+    if (typeof window === 'undefined') {
+      return 1280;
+    }
+
+    return window.innerWidth;
+  });
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined;
+    }
+
+    function handleResize() {
+      setViewportWidth(window.innerWidth);
+    }
+
+    handleResize();
+    window.addEventListener('resize', handleResize, { passive: true });
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const isPhoneViewport = viewportWidth <= 560;
+  const isTabletViewport = viewportWidth <= 820;
+  const calendarBlockSize = isPhoneViewport ? 5 : isTabletViewport ? 8 : 11;
+  const calendarBlockMargin = isPhoneViewport ? 1 : isTabletViewport ? 2 : 4;
+  const calendarFontSize = isPhoneViewport ? 9 : isTabletViewport ? 10 : 11;
+  const weekdayLabels = isPhoneViewport
+    ? false
+    : (['mon', 'wed', 'fri'] as Array<'mon' | 'wed' | 'fri'>);
+
   return (
     <section
       className="contributions-section"
@@ -56,15 +91,16 @@ export function ContributionsSection({
             <GitHubCalendar
               key={`${githubUsername}-${calendarRefreshToken}`}
               username={githubUsername}
-              blockSize={11}
-              blockMargin={4}
+              blockSize={calendarBlockSize}
+              blockMargin={calendarBlockMargin}
               blockRadius={2}
               colorScheme={theme}
               errorMessage="Unable to load the GitHub graph right now."
-              fontSize={11}
+              fontSize={calendarFontSize}
               showColorLegend={false}
+              showMonthLabels={!isPhoneViewport}
               showTotalCount={false}
-              showWeekdayLabels={['mon', 'wed', 'fri']}
+              showWeekdayLabels={weekdayLabels}
               theme={githubContributionTheme}
               year="last"
               className="github-calendar"

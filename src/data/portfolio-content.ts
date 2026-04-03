@@ -36,25 +36,32 @@ const lenisIcon: SimpleIcon = {
 
 export const experience: ExperienceItem[] = [
   {
-    period: '2022 - Present',
-    role: 'Senior Frontend Engineer',
-    company: 'TechCorp Inc.',
+    period: '2023 - Present',
+    role: 'Founder & CEO',
+    company: 'VectorX DB / LaunchX Labs',
     description:
-      'Led the frontend architecture for the core product dashboard. Mentored a team of 4 developers, migrated the legacy codebase to React, and improved performance across the UI.',
+      'Building a security-first vector database for AI workloads, focused on scalable retrieval, high performance, and production-ready infrastructure.',
   },
   {
-    period: '2019 - 2022',
-    role: 'Web Developer',
-    company: 'Creative Agency',
+    period: '2019 - Present',
+    role: 'Co-Founder',
+    company: 'HireSure.ai',
     description:
-      'Developed responsive marketing sites and e-commerce platforms for high-profile clients with a strong focus on accessibility, semantic HTML, and polished user interactions.',
+      'Co-founded an AI-driven hiring platform for offer closing, onboarding, and compensation intelligence with a strong focus on better candidate conversion.',
   },
   {
-    period: '2017 - 2019',
-    role: 'Junior Developer',
-    company: 'StartupHub',
+    period: '2013 - Present',
+    role: 'Founder & CEO',
+    company: 'flipClass',
     description:
-      'Collaborated with product managers to design and implement MVP interfaces, then translated early branding and product ideas into functional UI components.',
+      'Built and scaled an edtech platform for home and online tutoring, combining marketplace discovery with learning and assessment workflows.',
+  },
+  {
+    period: 'Earlier',
+    role: 'CTO',
+    company: 'MindQuest Games',
+    description:
+      'Led technology for a learning-games platform, including the core engine that lets educators and designers create interactive experiences across devices.',
   },
 ];
 
@@ -104,7 +111,7 @@ export function buildSocialLinks(githubProfileUrl: string): SocialLink[] {
     },
     {
       label: 'LinkedIn',
-      href: 'https://www.linkedin.com/',
+      href: 'https://www.linkedin.com/in/vineet-dwivedi/',
       Icon: LinkedInIcon,
     },
     {
