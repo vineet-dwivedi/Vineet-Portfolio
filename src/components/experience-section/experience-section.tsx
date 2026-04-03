@@ -20,12 +20,23 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
 
       <div className="experience-list">
         {experience.map((item) => (
-          <article className="experience-item" key={`${item.period}-${item.role}`}>
+          <article className="experience-item" key={`${item.period}-${item.role}-${item.company}`}>
             <p className="experience-period">{item.period}</p>
             <div className="experience-details">
               <h3>{item.role}</h3>
               <p className="experience-company">{item.company}</p>
-              <p className="experience-description">{item.description}</p>
+              {item.location ? <p className="experience-meta">{item.location}</p> : null}
+              {item.description ? (
+                <p className="experience-description">{item.description}</p>
+              ) : null}
+              {item.highlights?.length ? (
+                <ul className="experience-highlights">
+                  {item.highlights.map((highlight) => (
+                    <li key={highlight}>{highlight}</li>
+                  ))}
+                </ul>
+              ) : null}
+              {item.skills ? <p className="experience-skills">{item.skills}</p> : null}
             </div>
           </article>
         ))}

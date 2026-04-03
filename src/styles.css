@@ -728,7 +728,9 @@ code {
 }
 
 .experience-company,
-.experience-description {
+.experience-meta,
+.experience-description,
+.experience-skills {
   margin: 0;
 }
 
@@ -739,12 +741,36 @@ code {
   letter-spacing: -0.03em;
 }
 
+.experience-meta,
+.experience-skills {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  letter-spacing: -0.03em;
+}
+
 .experience-description {
   max-width: 36rem;
   color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.75;
   letter-spacing: -0.03em;
+}
+
+.experience-highlights {
+  display: grid;
+  gap: 0.7rem;
+  max-width: 36rem;
+  margin: 0;
+  padding-left: 1.15rem;
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.72;
+  letter-spacing: -0.03em;
+}
+
+.experience-highlights li::marker {
+  color: var(--text-primary);
 }
 
 .contact-link {
@@ -988,7 +1014,10 @@ code {
   }
 
   .experience-company,
+  .experience-meta,
   .experience-description,
+  .experience-skills,
+  .experience-highlights,
   .resume-link,
   .contact-card p,
   .project-description,

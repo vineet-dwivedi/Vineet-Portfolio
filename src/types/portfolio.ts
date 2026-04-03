@@ -7,7 +7,10 @@ export type ExperienceItem = {
   period: string;
   role: string;
   company: string;
-  description: string;
+  description?: string;
+  location?: string;
+  highlights?: string[];
+  skills?: string;
 };
 
 export type SocialLink = {

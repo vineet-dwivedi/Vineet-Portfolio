@@ -36,32 +36,25 @@ const lenisIcon: SimpleIcon = {
 
 export const experience: ExperienceItem[] = [
   {
-    period: '2023 - Present',
-    role: 'Founder & CEO',
-    company: 'VectorX DB / LaunchX Labs',
+    period: 'Feb 2026 - Present | 3 mos',
+    role: 'Software Developer Intern',
+    company: 'Flowaris Technologies | Internship',
+    location: 'Madhya Pradesh, India | Remote',
     description:
-      'Building a security-first vector database for AI workloads, focused on scalable retrieval, high performance, and production-ready infrastructure.',
+      'As an SDE Intern at Flowaris Technologies, I contribute to designing and developing full-stack web applications with a focus on performance, scalability, and user experience.',
+    highlights: [
+      'Developing RESTful APIs using Node.js and Express.',
+      'Implementing dynamic and responsive UIs with React.',
+      'Managing databases and schema design using MongoDB.',
+    ],
+    skills: 'Express.js, React.js and +2 skills',
   },
   {
-    period: '2019 - Present',
-    role: 'Co-Founder',
-    company: 'HireSure.ai',
-    description:
-      'Co-founded an AI-driven hiring platform for offer closing, onboarding, and compensation intelligence with a strong focus on better candidate conversion.',
-  },
-  {
-    period: '2013 - Present',
-    role: 'Founder & CEO',
-    company: 'flipClass',
-    description:
-      'Built and scaled an edtech platform for home and online tutoring, combining marketplace discovery with learning and assessment workflows.',
-  },
-  {
-    period: 'Earlier',
-    role: 'CTO',
-    company: 'MindQuest Games',
-    description:
-      'Led technology for a learning-games platform, including the core engine that lets educators and designers create interactive experiences across devices.',
+    period: 'Oct 2025 - Present | 7 mos',
+    role: 'Trainee',
+    company: 'Sheryians Coding School | Apprenticeship',
+    location: 'Madhya Pradesh, India | Remote',
+    skills: 'JavaScript, CSS3 and +8 skills',
   },
 ];
 
