@@ -5,8 +5,8 @@ export const githubContributionApiUrl = 'https://github-contributions-api.jogrub
 export const githubRepoApiUrl = 'https://api.github.com';
 export const contributionRefreshIntervalMs = 1000 * 60 * 15;
 export const githubContributionTheme = {
-  light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
-  dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
+  light: ['#efe8de', '#d8c4b2', '#c4a68f', '#a8836b', '#8c654e'],
+  dark: ['#29231e', '#45372d', '#6e5848', '#9d7c66', '#cfa788'],
 };
 
 export function getGithubProfileUrl(username: string) {

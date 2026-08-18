@@ -1,4 +1,3 @@
-import { Download } from 'lucide-react';
 import type { ExperienceItem } from '../../types/portfolio';
 import { SectionHeader } from '../section-header/section-header';
 
@@ -7,16 +6,9 @@ type ExperienceSectionProps = {
 };
 
 export function ExperienceSection({ experience }: ExperienceSectionProps) {
-  const resumeAction = (
-    <a className="resume-link" href="/resume-placeholder.txt" download>
-      <Download size={16} strokeWidth={1.9} />
-      <span>Resume</span>
-    </a>
-  );
-
   return (
     <section className="experience-section" aria-labelledby="experience-title">
-      <SectionHeader id="experience-title" title="Experience" action={resumeAction} />
+      <SectionHeader id="experience-title" title="Experience" />
 
       <div className="experience-list">
         {experience.map((item) => (

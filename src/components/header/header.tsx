@@ -18,13 +18,9 @@ export function Header({
   return (
     <header className="site-header">
       <a className="brand" href="#top" aria-label="Back to top">
-        <img
-          className="brand-avatar"
-          src={avatarImage}
-          alt="Portrait of Vineet Dwivedi"
-          loading="eager"
-          decoding="async"
-        />
+        <span className="brand-icon-v" aria-hidden="true">
+          V
+        </span>
         <span className="brand-copy">
           <span className="brand-name">Vineet</span>
           <span className="brand-role">Portfolio</span>

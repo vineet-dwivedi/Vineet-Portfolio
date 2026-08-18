@@ -1,31 +1,32 @@
 import { ArrowUpRight } from 'lucide-react';
 import { buildProjectMeta, getProjectLiveUrl } from '../../lib/github';
 import type { GitHubRepo } from '../../types/portfolio';
+import { GithubIcon } from '../icons/social-icons';
 import { SectionHeader } from '../section-header/section-header';
 
 type ProjectsSectionProps = {
   areProjectsLoading: boolean;
-  githubStarsUrl: string;
+  githubProfileUrl: string;
   hasGithubUsername: boolean;
   projectsError: string;
-  starredRepos: GitHubRepo[];
+  userRepos: GitHubRepo[];
 };
 
 export function ProjectsSection({
   areProjectsLoading,
-  githubStarsUrl,
+  githubProfileUrl,
   hasGithubUsername,
   projectsError,
-  starredRepos,
+  userRepos,
 }: ProjectsSectionProps) {
   const sectionAction = hasGithubUsername ? (
     <a
       className="section-link"
-      href={githubStarsUrl}
+      href={`${githubProfileUrl}?tab=repositories`}
       target="_blank"
       rel="noreferrer"
     >
-      <span>Starred repos</span>
+      <span>All repositories</span>
       <ArrowUpRight size={16} strokeWidth={1.9} />
     </a>
   ) : null;
@@ -36,21 +37,22 @@ export function ProjectsSection({
       id="projects"
       aria-labelledby="projects-title"
     >
-      <SectionHeader id="projects-title" title="Projects" action={sectionAction} />
+      <SectionHeader id="projects-title" title="GitHub & Projects" action={sectionAction} />
 
       {hasGithubUsername ? (
-        starredRepos.length > 0 ? (
+        userRepos.length > 0 ? (
           <div className="project-list">
-            {starredRepos.map((repo) => {
+            {userRepos.map((repo) => {
               const liveUrl = getProjectLiveUrl(repo.homepage);
 
               return (
                 <article className="project-card" key={repo.id}>
                   <div className="project-copy">
-                    <h3>{repo.name}</h3>
+                    <div className="project-card-header">
+                      <h3>{repo.name}</h3>
+                    </div>
                     <p className="project-description">
-                      {repo.description ??
-                        `Starred repository from ${repo.owner.login}.`}
+                      {repo.description ?? 'Public GitHub repository.'}
                     </p>
                     <p className="project-meta">{buildProjectMeta(repo)}</p>
                   </div>
@@ -75,6 +77,7 @@ export function ProjectsSection({
                       rel="noreferrer"
                       aria-label={`Open code for ${repo.full_name}`}
                     >
+                      <GithubIcon style={{ width: 14, height: 14 }} />
                       <span>Code</span>
                     </a>
                   </div>
@@ -85,14 +88,14 @@ export function ProjectsSection({
         ) : (
           <div className="project-empty">
             {areProjectsLoading
-              ? 'Syncing your starred repositories...'
-              : (projectsError || 'No starred repositories found for this profile.')}
+              ? 'Syncing repositories from GitHub...'
+              : (projectsError || 'No repositories found for this profile.')}
           </div>
         )
       ) : (
         <div className="project-empty">
           Add <code>VITE_GITHUB_USERNAME</code> to <code>.env.local</code> to
-          sync starred repositories here.
+          sync repositories here.
         </div>
       )}
     </section>

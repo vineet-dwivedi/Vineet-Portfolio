@@ -30,6 +30,23 @@ export function useTheme() {
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     window.localStorage.setItem(themeStorageKey, theme);
+
+    if (typeof window !== 'undefined') {
+      const strokeColor = theme === 'dark' ? '%23f5efea' : '%23342a24';
+      const bgColor = theme === 'dark' ? '%231c1815' : '%23fbf8f3';
+      const borderColor = theme === 'dark' ? 'rgba(245,239,234,0.15)' : 'rgba(52,42,36,0.12)';
+      const svg = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='${bgColor}' stroke='${borderColor}' stroke-width='1'/%3E%3Cpath d='M9.5 10.5L16 22.5L22.5 10.5' stroke='${strokeColor}' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E`;
+
+      let favicon = document.getElementById('favicon') as HTMLLinkElement | null;
+      if (!favicon) {
+        favicon = document.createElement('link');
+        favicon.id = 'favicon';
+        favicon.rel = 'icon';
+        favicon.type = 'image/svg+xml';
+        document.head.appendChild(favicon);
+      }
+      favicon.href = svg;
+    }
   }, [theme]);
 
   function toggleTheme(event?: MouseEvent<HTMLButtonElement>) {

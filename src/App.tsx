@@ -41,10 +41,9 @@ function App() {
     contributionStatus,
     formattedContributionCount,
     githubProfileUrl,
-    githubStarsUrl,
     hasGithubUsername,
     projectsError,
-    starredRepos,
+    userRepos,
   } = useGithubPortfolio(githubUsername);
 
   useSmoothScroll();
@@ -57,7 +56,7 @@ function App() {
 
     const timeoutId = window.setTimeout(() => {
       setIsIntroVisible(false);
-    }, 2300);
+    }, 2800);
 
     return () => {
       window.clearTimeout(timeoutId);
@@ -132,10 +131,10 @@ function App() {
           <RevealBlock delay={0.38} isActive={isPortfolioVisible}>
             <ProjectsSection
               areProjectsLoading={areProjectsLoading}
-              githubStarsUrl={githubStarsUrl}
+              githubProfileUrl={githubProfileUrl}
               hasGithubUsername={hasGithubUsername}
               projectsError={projectsError}
-              starredRepos={starredRepos}
+              userRepos={userRepos}
             />
           </RevealBlock>
           <RevealBlock delay={0.46} isActive={isPortfolioVisible}>

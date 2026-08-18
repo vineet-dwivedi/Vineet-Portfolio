@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from 'react';
 import {
   contributionRefreshIntervalMs,
   getGithubProfileUrl,
-  getGithubStarsUrl,
   githubContributionApiUrl,
   githubRepoApiUrl,
 } from '../lib/github';
@@ -13,13 +12,12 @@ export function useGithubPortfolio(username: string) {
   const [contributionCount, setContributionCount] = useState<number | null>(null);
   const [contributionError, setContributionError] = useState('');
   const [isContributionLoading, setIsContributionLoading] = useState(false);
-  const [starredRepos, setStarredRepos] = useState<GitHubRepo[]>([]);
+  const [userRepos, setUserRepos] = useState<GitHubRepo[]>([]);
   const [projectsError, setProjectsError] = useState('');
   const [areProjectsLoading, setAreProjectsLoading] = useState(false);
 
   const hasGithubUsername = username.length > 0;
   const githubProfileUrl = getGithubProfileUrl(username);
-  const githubStarsUrl = getGithubStarsUrl(username);
   const formattedContributionCount = useMemo(
     () =>
       contributionCount === null
@@ -99,12 +97,12 @@ export function useGithubPortfolio(username: string) {
 
     let isCancelled = false;
 
-    async function loadStarredRepos() {
+    async function loadUserRepos() {
       setAreProjectsLoading(true);
 
       try {
         const response = await fetch(
-          `${githubRepoApiUrl}/users/${username}/starred?sort=created&direction=desc&per_page=6`,
+          `${githubRepoApiUrl}/users/${username}/repos?sort=updated&direction=desc&per_page=6`,
           {
             headers: {
               Accept: 'application/vnd.github+json',
@@ -116,18 +114,18 @@ export function useGithubPortfolio(username: string) {
         if (!response.ok || !Array.isArray(data)) {
           throw new Error(
             Array.isArray(data)
-              ? 'Unable to load starred repositories.'
-              : (data.message ?? 'Unable to load starred repositories.'),
+              ? 'Unable to load repositories.'
+              : (data.message ?? 'Unable to load repositories.'),
           );
         }
 
         if (!isCancelled) {
-          setStarredRepos(data);
+          setUserRepos(data);
           setProjectsError('');
         }
       } catch {
         if (!isCancelled) {
-          setProjectsError('Unable to load starred repositories right now.');
+          setProjectsError('Unable to load repositories right now.');
         }
       } finally {
         if (!isCancelled) {
@@ -136,7 +134,7 @@ export function useGithubPortfolio(username: string) {
       }
     }
 
-    void loadStarredRepos();
+    void loadUserRepos();
 
     return () => {
       isCancelled = true;
@@ -150,9 +148,8 @@ export function useGithubPortfolio(username: string) {
     contributionStatus,
     formattedContributionCount,
     githubProfileUrl,
-    githubStarsUrl,
     hasGithubUsername,
     projectsError,
-    starredRepos,
+    userRepos,
   };
 }

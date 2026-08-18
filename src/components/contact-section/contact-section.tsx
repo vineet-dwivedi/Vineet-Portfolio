@@ -10,8 +10,8 @@ export function ContactSection() {
           Building thoughtful products, collaborations, or freelance work.
           Reach out and let&apos;s make something sharp and useful together.
         </p>
-        <a className="contact-link" href="mailto:your.email@example.com">
-          your.email@example.com
+        <a className="contact-link" href="mailto:vineetdwivedi409@gmail.com">
+          vineetdwivedi409@gmail.com
         </a>
       </div>
     </section>
