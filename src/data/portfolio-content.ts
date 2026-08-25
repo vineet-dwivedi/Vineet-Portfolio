@@ -14,6 +14,7 @@ import {
   siPython,
   siReact,
   siVite,
+  siJavascript
 } from 'simple-icons';
 import {
   GithubIcon,
@@ -74,7 +75,8 @@ export const stackGroups: StackGroup[] = [
   {
     title: 'Backend',
     items: [
-      { label: 'Python', subtitle: 'Core language', icon: siPython },
+      {label: 'Javascript', subtitle: 'Core language', icon: siJavascript},
+      { label: 'Python', subtitle: 'Language', icon: siPython },
       { label: 'FastAPI', subtitle: 'Async REST APIs', icon: siFastapi },
       { label: 'Node.js', subtitle: 'Runtime & APIs', icon: siNodedotjs },
       { label: 'Express', subtitle: 'Service layer', icon: siExpress },

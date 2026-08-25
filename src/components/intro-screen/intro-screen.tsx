@@ -36,7 +36,7 @@ export function IntroScreen({ isVisible, name }: IntroScreenProps) {
   const prefersReducedMotion = useReducedMotion();
   const particles = useMemo(() => generateMinimalParticles(28), []);
 
-  const nameLetters = (name + ' DWIVEDI').split('');
+  const nameLetters = (name + ' Dwivedi').split('');
 
   return (
     <AnimatePresence mode="wait">
